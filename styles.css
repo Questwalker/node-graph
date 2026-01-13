@@ -1,0 +1,23 @@
+:root {
+    color-scheme: light dark;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 4px;
+}
+
+#graphcontainer {
+    box-sizing: border-box;
+    border: 1px solid #ee82ee;
+    height: 100%;
+}
+
+#databox {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
