@@ -17,3 +17,7 @@ grault baz
 corge grault
 ```
 Will create the nodes foo, bar, baz, quux, corge, and grault and the links will shape the graph to resemble the constellation Ursa Minor.
+
+### Controls
+Click on a node to fix or unfix the node in position.\
+When dragging a node, hold ctrl when releasing to toggle fixing the node in place

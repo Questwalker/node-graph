@@ -176,3 +176,20 @@ var network = new vis.Network(graphcontainer, data, options)
 
 updateNodes()
 
+network.on("click", function (event) {
+    if (event.nodes.length > 0) {
+        wasFixed = nodes.get(event.nodes[0]).fixed || false
+        nodes.update({id: event.nodes[0], fixed: !wasFixed})
+    }
+})
+network.on('dragStart', function (event) {
+    if (event.nodes.length > 0) {
+        wasFixed = nodes.get(event.nodes[0]).fixed || false
+        nodes.update({id: event.nodes[0], fixed: false})
+    }
+})
+network.on('dragEnd', function (event) {
+    if (event.nodes.length > 0) {
+        nodes.update({id: event.nodes[0], fixed: (wasFixed != event.event.srcEvent.ctrlKey)})
+    }
+})
