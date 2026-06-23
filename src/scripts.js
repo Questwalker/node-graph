@@ -176,7 +176,15 @@ var network = new vis.Network(graphcontainer, data, options)
 
 updateNodes()
 
-network.on("click", function (event) {
+
+var clickStartTime = 0
+graphcontainer.addEventListener('pointerdown', function (params) {
+    clickStartTime = Date.now()
+})
+network.on('click', function (event) {
+    // just holding down the mouse button without moving causes this to trigger (after ~0.3 seconds) for some fucking reason
+    let clickDuration = Date.now() - clickStartTime;
+    if (clickDuration > 200) return
     if (event.nodes.length > 0) {
         wasFixed = nodes.get(event.nodes[0]).fixed || false
         nodes.update({id: event.nodes[0], fixed: !wasFixed})
